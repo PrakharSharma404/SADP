@@ -36,4 +36,16 @@ public class AdminController {
     public void deleteUser(@PathVariable Long id) {
         adminService.deleteUser(id);
     }
+
+    @PutMapping("/{id}/status")
+    public AdminUser toggleStatus(@PathVariable Long id) {
+        log.info("Request to toggle status for user ID: {}", id);
+        return adminService.toggleUserStatus(id);
+    }
+
+    @PostMapping("/{id}/reset-password")
+    public void resetPassword(@PathVariable Long id) {
+        log.info("Request to reset password for user ID: {}", id);
+        adminService.resetPassword(id);
+    }
 }

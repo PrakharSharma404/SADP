@@ -22,10 +22,6 @@
     
     <modules>
         <module>m1-admin-portal</module>
-        <module>m2-policy-definition</module>
-        <module>m3-enforcement-engine</module>
-        <module>m4-integration-gateway</module>
-        <module>m5-audit-log</module>
     </modules>
 
 	<dependencyManagement>

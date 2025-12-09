@@ -29,4 +29,18 @@ public class AdminService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    public AdminUser toggleUserStatus(Long id) {
+        AdminUser user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setActive(!user.isActive());
+        log.info("Toggling status for user '{}' to {}", user.getUsername(), user.isActive());
+        return userRepository.save(user);
+    }
+
+    public void resetPassword(Long id) {
+        AdminUser user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        log.info("initiating password reset for user '{}' ({})", user.getUsername(), user.getEmail());
+        // Simulating email service call
+        log.info(">> EMAIL SENT to {}: 'Click here to reset your password...'", user.getEmail());
+    }
 }
